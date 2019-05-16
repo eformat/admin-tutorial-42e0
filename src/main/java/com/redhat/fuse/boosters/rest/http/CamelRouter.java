@@ -6,8 +6,6 @@ import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.model.rest.RestParamType;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 /**
  * A simple Camel REST DSL route that implements the arrivals service.
  * 
@@ -57,11 +55,11 @@ public class CamelRouter extends RouteBuilder {
 
             //
             // COMMENT OUT THIS
-            .to("direct:arrivalsImplLocal", "direct:departuresImplLocal");
+            //.to("direct:arrivalsImplLocal", "direct:departuresImplLocal");
 
             //
             // UNCOMMENT THIS
-            //.to("direct:arrivalsImplRemote", "direct:departuresImplRemote");
+            .to("direct:arrivalsImplRemote", "direct:departuresImplRemote");
     
         from("direct:arrivalsImplRemote").description("Arrivals REST service implementation route")
             .streamCaching()
